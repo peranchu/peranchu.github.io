@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- p5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+  <!-- ml5 -->
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="card teal darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">SONIDO EN EL AIRE</span>
+            <p>Red Neuronal implementada en ML5, entrenada para reconocer partes del cuerpo
+              usando el navegador Web y una webCam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row grey lighten-3 z-depth-3">
+      <div class="col s4">
+        <div class="card-panel teal darken-3 center-align">
+          <span class="card-title white-text">Configuración</span>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section center align">
+          <div class="input-field col s12">
+            <select id="escala" onchange="cambiarEscala()">
+              <option value="" disabled selected>Escoge una opción</option>
+              <option value="1">Mayor</option>
+              <option value="2">Menor</option>
+              <option value="3">Pentátónica</option>
+              <option value="4">Akebono</option>
+            </select>
+            <label>Escala</label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section center align">
+          <div class="input-field col s12">
+            <select id="tonalidad" onchange="cambiarTonalidad()">
+              <option value="" disabled selected>Escoge una opción</option>
+              <option value="1">C</option>
+              <option value="2">F</option>
+              <option value="3">G</option>
+              <option value="3">A</option>
+            </select>
+            <label>Tonalidad</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col s8">
+        <div id="colorMensaje" class="card-panel orange accent-3 center-align">
+          <span id="mensajeCarga" class="card-title">Cargando...</span>
+        </div>
+        <!-- Video Captura -->
+        <div class="card-panel teal lighten-2 center-align" id="sketch1">
+          <span class="card-title left">Captura</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Sketchs desde p5.js -->
+  <div class="container">
+    <div class="row grey lighten-3 z-depth-3">
+      <div class="col s4">
+        <!-- P5.js sketch3-->
+        <div class="card-panel teal darken-2 center-align" id="sketch3">
+          <span class="card-title left white-text">Amplitud</span>
+        </div>
+          <img class="responsive-img" src="imagenes/manos.png" alt="" width="400" height="250">
+      </div>
+
+      <div class="col s8">
+        <!-- P5.js sketch2-->
+        <div class="card-panel teal darken-2 center-align" id="sketch2">
+          <span class="card-title left white-text">Alturas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div class="container">
+    <footer class="page-footer teal darken-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">ARTEC</h5>
+            <h5 class="white.text">Diseño en Arte y Tecnología</h5>
+            <p class="grey-text text-lighten-4">Idea y diseño: Honorino García</p>
+          </div>
+
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://ml5js.org/">Ml5</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://p5js.org/">p5.js</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Bajo Licencia Creative Commons
+          <img class="responsive-img right" src="imagenes/licencia88x31.png"></img>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="sketch.js"></script>
+</body>
+
+</html>
