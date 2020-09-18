@@ -26,8 +26,6 @@ function cambiarEscala() {
   return seleccionE;
 }
 
-
-
 //========================================
 
 let posicionesLx;
@@ -39,6 +37,8 @@ let posicionesRx;
 let posicionesRy;
 let scoreMdr;
 
+let limitIzq = 420;
+let limitDer = 10;
 
 let fuentesNotas = []; //Array png notas
 
@@ -143,7 +143,7 @@ let glow = 1;
 //dos Alturas
 var sketch2 = function (p) {
   p.setup = function () {
-    canvas2 = p.createCanvas(640, 480);
+    canvas2 = p.createCanvas(440, 480);
     canvas2.parent('sketch2');
   };
 
@@ -159,7 +159,7 @@ var sketch2 = function (p) {
 
     for (let i = 0; i < 10; i++) {
       if (posicionesRx > w * i && posicionesRx < (w * i) + w ) {
-        p.fill(255, 50);
+        p.fill('#fae');
       } else {
         p.fill(29, 53, 87);
       }
@@ -168,7 +168,7 @@ var sketch2 = function (p) {
       p.rect(w * i, 0, w, p.height);
     }
 
-    let n = p.floor(p.map(posicionesRx, 0, 640, 0, 8));
+    let n = p.floor(p.map(posicionesRx, 0, 440, 0, 8, true));
 
 
     let amplitud = parseFloat(p.map(posLy, 0, 280, 1, 0));
@@ -205,13 +205,13 @@ var sketch2 = function (p) {
 
 
     //Posicionado Fuentes Notas
-    let pos = 18;
+    let pos = 4;
     switch (cambiarTonalidad()) {
       case 1: //C
         for (let i = 0; i < 8; i++) {
           p.image(fuentesNotas[FuentesEscala[i]], pos, 240);
           osc.freq(p.midiToFreq(Escala[n] + 48));
-          pos += 80;
+          pos += 56;
         }
         break;
       case 2: //F
@@ -224,7 +224,7 @@ var sketch2 = function (p) {
         for (let i = 0; i < 8; i++) {
           p.image(fuentesNotas[modFescalas[i]], pos, 240);
           osc.freq(p.midiToFreq(Escala[n] + 53));
-          pos += 80;
+          pos += 56;
         }
         break;
       case 3: //G
@@ -237,7 +237,7 @@ var sketch2 = function (p) {
         for (let i = 0; i < 8; i++) {
           p.image(fuentesNotas[modFescalas[i]], pos, 240);
           osc.freq(p.midiToFreq(Escala[n] + 55));
-          pos += 80;
+          pos += 56;
         }
         break;
         case 4: //A
@@ -250,14 +250,14 @@ var sketch2 = function (p) {
         for (let i = 0; i < 8; i++) {
           p.image(fuentesNotas[modFescalas[i]], pos, 240);
           osc.freq(p.midiToFreq(Escala[n] + 57));
-          pos += 80;
+          pos += 56;
         }
         break;
       default: //C
         for (let i = 0; i < 8; i++) {
           p.image(fuentesNotas[FuentesEscala[i]], pos, 240);
           osc.freq(p.midiToFreq(Escala[n] + 60));
-          pos += 80;
+          pos += 56;
         }
         break;
     }
@@ -269,7 +269,6 @@ var sketch2 = function (p) {
     }
 
     sw += glow;
-
     if (posicionesRx != null && posicionesRy != null) {
       p.stroke(255, 50);
       p.strokeWeight(sw);
